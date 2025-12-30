@@ -822,11 +822,20 @@ section.courses .item img {
     border-top-left-radius: 5px;
 }
 
+section.courses .item {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
 section.courses .item .down-content {
     padding: 30px;
     background-color: #fff;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 section.courses .item .down-content h4 {
@@ -837,10 +846,12 @@ section.courses .item .down-content h4 {
     font-weight: 700;
     margin-top: 0px;
     margin-bottom: 20px;
+    min-height: 40px;
 }
 
 section.courses .item .down-content p {
     margin-bottom: 25px;
+    min-height: 66px;
 }
 
 section.courses .item .down-content img {
@@ -856,7 +867,7 @@ section.courses .item .down-content img {
 }
 
 section.courses .item .down-content .text-button-contact {
-    margin-top: 15px;
+    margin-top: auto;
     text-align: center;
 }
 
