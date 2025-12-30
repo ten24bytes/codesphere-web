@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir \"d:\\\\Code\\\\codesphere-web\\\\assets\\\\images\"\")",
+      "Bash(findstr:*)",
+      "Bash(dir:*)"
+    ]
+  }
+}

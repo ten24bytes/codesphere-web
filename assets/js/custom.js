@@ -103,4 +103,31 @@
 	initializeClock(((new Date()).getFullYear()+1) + "/1/1")
 	})()
 
+
+	// Course contact button click handler
+	$(document).on('click', '.contact-course', function(e) {
+	  e.preventDefault();
+
+	  // Get course data from data attributes
+	  var courseName = $(this).data('course');
+	  var grades = $(this).data('grades');
+
+	  // Pre-populate message textarea
+	  var message = "I'm interested in the \"" + courseName + "\" course for my child in Grade " + grades + ".";
+	  $('#message').val(message);
+
+	  // Scroll to contact section
+	  var contactSection = $('[data-section="section6"]');
+	  if (contactSection.length) {
+	    $('html, body').animate({
+	      scrollTop: contactSection.offset().top - 0
+	    }, 800);
+	  }
+
+	  // Optional: Focus on the message field
+	  setTimeout(function() {
+	    $('#message').focus();
+	  }, 900);
+	});
+
 })(jQuery);
