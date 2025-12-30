@@ -65,12 +65,16 @@ p {
     border: 2px solid rgba(250,250,250,0.1);
 }
 
-section.coming-soon .section-heading h2 {
-    margin-top: 0px;
+section.coming-soon {
+    padding-top: 120px;
 }
 
-section.coming-soon .section-heading h2:before {
-    display: none;
+section.coming-soon .section-heading {
+    margin-bottom: 70px;
+}
+
+section.coming-soon .section-heading h2 {
+    margin-top: 0px;
 }
 
 
