@@ -858,6 +858,11 @@ section.courses .item .down-content p {
     min-height: 66px;
 }
 
+section.courses .item .down-content .info {
+    margin-bottom: 20px;
+    min-height: 40px;
+}
+
 section.courses .item .down-content img {
     width: 40px;
     border: 2px solid #f5a425;
@@ -886,6 +891,16 @@ section.courses .item .down-content .text-button-contact a {
 
 section.courses .item .down-content .text-button-contact a:hover {
     color: #fff;
+}
+
+section.courses .owl-carousel .owl-stage {
+    display: flex;
+    align-items: stretch;
+}
+
+section.courses .owl-carousel .owl-item {
+    display: flex;
+    height: auto;
 }
 
 section.courses .owl-carousel .owl-nav {
