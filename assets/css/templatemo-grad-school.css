@@ -247,7 +247,7 @@ a.menu-link { display: none; }
 
 .main-menu li .sub-menu {
     position: absolute;
-    width: 160px;
+    width: 200px;
     background-color: #18233a;
     opacity: 0;
     visibility: hidden;
@@ -284,6 +284,8 @@ a.menu-link { display: none; }
     letter-spacing: 0.5px;
     border: none;
     transition: all 0.5s;
+    display: block;
+    text-align: left;
 }
 
 .main-menu li .sub-menu li a:hover {
