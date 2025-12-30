@@ -130,4 +130,85 @@
 	  }, 900);
 	});
 
+
+	// Lazy Loading Enhancement for Images
+	(function initLazyLoading() {
+	  // Check if IntersectionObserver is supported
+	  if ('IntersectionObserver' in window) {
+	    // Use IntersectionObserver for modern browsers
+	    var lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+	      entries.forEach(function(entry) {
+	        if (entry.isIntersecting) {
+	          var lazyImage = entry.target;
+
+	          // Add loaded class for fade-in effect
+	          if (lazyImage.complete) {
+	            lazyImage.classList.add('loaded');
+	          } else {
+	            lazyImage.addEventListener('load', function() {
+	              lazyImage.classList.add('loaded');
+	            });
+	          }
+
+	          // Stop observing this image
+	          lazyImageObserver.unobserve(lazyImage);
+	        }
+	      });
+	    }, {
+	      // Start loading when image is 200px away from viewport
+	      rootMargin: '200px'
+	    });
+
+	    // Observe all lazy images
+	    $('.lazy-image').each(function() {
+	      lazyImageObserver.observe(this);
+	    });
+	  } else {
+	    // Fallback for older browsers - load images on scroll
+	    var lazyImages = $('.lazy-image');
+
+	    function loadVisibleImages() {
+	      lazyImages.each(function() {
+	        var $img = $(this);
+	        if ($img.hasClass('loaded')) return;
+
+	        var rect = this.getBoundingClientRect();
+	        var windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+	        // Check if image is in viewport (with 200px threshold)
+	        if (rect.top <= windowHeight + 200 && rect.bottom >= -200) {
+	          if (this.complete) {
+	            $img.addClass('loaded');
+	          } else {
+	            $img.on('load', function() {
+	              $(this).addClass('loaded');
+	            });
+	          }
+	        }
+	      });
+	    }
+
+	    // Initial check
+	    loadVisibleImages();
+
+	    // Check on scroll (throttled)
+	    var scrollTimeout;
+	    $(window).on('scroll', function() {
+	      if (scrollTimeout) {
+	        clearTimeout(scrollTimeout);
+	      }
+	      scrollTimeout = setTimeout(loadVisibleImages, 100);
+	    });
+	  }
+
+	  // Ensure images already loaded (cached) get the 'loaded' class immediately
+	  $(window).on('load', function() {
+	    $('.lazy-image').each(function() {
+	      if (this.complete && !$(this).hasClass('loaded')) {
+	        $(this).addClass('loaded');
+	      }
+	    });
+	  });
+	})();
+
 })(jQuery);
